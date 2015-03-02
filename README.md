@@ -1,2 +1,2 @@
-# t9
-Automated texting prediction system
+# T9 
+Cellphone texting prediction system coded in C
