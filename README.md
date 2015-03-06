@@ -1,5 +1,5 @@
 # T9
-Implementation in C:
+Implementation written in C on Linux Platform:
 
 Cellphone texting prediction technology 
 
