@@ -40,8 +40,8 @@ int main(int argc, char** argv) {
 	return 0;
 }
 
-// post:	takes in a letter and returns the corresponding
-// 		t9 key.
+// post: takes in a letter and returns the corresponding
+// 	 t9 key.
 int getKey(char letter) {
 	switch(letter) {
 		case 'a':
@@ -79,40 +79,40 @@ int getKey(char letter) {
 }
 
 //	post: Takes in dictionary word and top of Trie.
-//			Builds the Trie from top to bottom pathed
-//			by the given word. Given word is saved to the last
-//			path of the key Node for each word. Multiple
-//			words can be stored in the same Node.
+// 	      Builds the Trie from top to bottom pathed
+//            by the given word. Given word is saved to the last
+//	      path of the key Node for each word. Multiple
+//	      words can be stored in the same Node.
 void buildTrie(Node* head, char* word) {
 	LinkedList* temp;
 	for (int i = 0; i < strlen(word)-1; i++) {
-			int key = getKey(word[i]);
-			if (head->numberKey[key] != NULL) {
-				head = head->numberKey[key];
+		int key = getKey(word[i]);
+		if (head->numberKey[key] != NULL) {
+			head = head->numberKey[key];
+		} else {
+			head->numberKey[key] = newNode();
+			head = head->numberKey[key];
+		}
+		if (i == strlen(word)-2 ) {
+			if (head->front == NULL) {
+				head->front = linkedList(word);
 			} else {
-				head->numberKey[key] = newNode();
-				head = head->numberKey[key];
-			}
-			if (i == strlen(word)-2 ) {
-				if (head->front == NULL) {
-					head->front = linkedList(word);
-				} else {
-					temp = head->front;
-					while (temp->next != NULL) {
-						temp = temp->next;
-					}
-					temp->next = linkedList(word);
-				}	
-			}
+				temp = head->front;
+				while (temp->next != NULL) {
+					temp = temp->next;
+				}
+				temp->next = linkedList(word);
+			}	
+		}
 	}			
 }
 
 //	post: Takes given Trie and searches for the word associated
-//			with the User's input. If '#' is entered then it
-//			will search for other appropiate options for the same
-//			t9 key entry. If exit is entered by the User, the program
-//			will immediately exit.
-//			Valid User input is 2-9 integer keys and '#' option.
+//	      with the User's input. If '#' is entered then it
+//     	      will search for other appropiate options for the same
+//	      t9 key entry. If exit is entered by the User, the program
+//	      will immediately exit.
+//	      Valid User input is 2-9 integer keys and '#' option.
 void search(Node* root) {	
 	char ui[MAX_LINE];
 	Node* current = root;
@@ -140,40 +140,39 @@ void search(Node* root) {
 		for (int i = 0; i < strlen(ui)-1; i++) {
 			if (current != NULL) {
 				switch(ui[i]) {
-						case '2':
-							current = current->numberKey[0];
-							break;
-						case '3':
-							current = current->numberKey[1];
-							break;
+					case '2':
+						current = current->numberKey[0];
+						break;
+					case '3':
+						current = current->numberKey[1];							break;
 						case '4':
-							current = current->numberKey[2];
+						current = current->numberKey[2];
+						break;
+					case '5':
+						current = current->numberKey[3];
+						break;
+					case '6':
+						current = current->numberKey[4];
+						break;
+					case '7':
+						current = current->numberKey[5];
+						break;
+					case '8':
+						current = current->numberKey[6];
+						break;
+					case '9':
+						current = current->numberKey[7];
+						break;
+					case '#':
+						if (pound == 0) {
+							listPointer = current->front;
+						}
+						pound++;
 							break;
-						case '5':
-							current = current->numberKey[3];
-							break;
-						case '6':
-							current = current->numberKey[4];
-							break;
-						case '7':
-							current = current->numberKey[5];
-							break;
-						case '8':
-							current = current->numberKey[6];
-							break;
-						case '9':
-							current = current->numberKey[7];
-							break;
-						case '#':
-							if (pound == 0) {
-								listPointer = current->front;
-							}
-							pound++;
-							break;
-						default:
-							fprintf(stderr, "   Invalid input: can only accept Integer (2 to 9)  or #\n");
-							exit(1);
-					}
+					default:
+						fprintf(stderr, "   Invalid input: can only accept Integer (2 to 9)  or #\n");
+						exit(1);
+				}
 			 } else {
 				 if (done == 0) {
 				 	done = 1;
