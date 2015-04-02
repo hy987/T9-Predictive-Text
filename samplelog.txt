@@ -1,0 +1,23 @@
+Enter "exit" to quit.
+Enter Key Sequence (or "#" for next word):
+> 76257
+	'rocks'
+Enter Key Sequence (or "#" for next word):
+> #
+	'socks'
+Enter Key Sequence (or "#" for next word):
+> 53556
+	'jello'
+Enter Key Sequence (or "#" for next word):
+> #
+    There are no more T9onyms
+
+Enter Key Sequence (or "#" for next word):
+> 76257#
+	'socks'
+Enter Key Sequence (or "#" for next word):
+> 76257##
+	There are no more T9onyms
+>4423
+	Not found in current dictionary.
+>exit
